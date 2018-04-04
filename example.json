@@ -1,0 +1,29 @@
+{
+  "name": "Example",
+  "state": [
+    {
+      "id": 0,
+      "parent": null, 
+      "slide": "#Which do you prefer?",
+      "link": null
+    },
+    {
+      "id": 1,
+      "parent": 0,
+      "slide": "#Hurray you are a cat person!",
+      "link": "Cat"
+    },
+    {
+      "id": 2,
+      "parent": 0,
+      "slide": "#Hurray you are a dog person!",
+      "link": "Dog"
+    },
+    {
+      "id": 3,
+      "parent": 2,
+      "slide": "#Done",
+      "link": "Next"
+    }
+  ]
+}
