@@ -4,7 +4,12 @@
   "description": "Create a decision tree from JSON.",
   "main": "dist/app.js",
   "scripts": {
+    "build": "babel ./src --out-dir ./dist && npm i -g",
+    "start": "npm run build && decision_json",
     "test": "jest"
+  },
+  "bin": {
+    "decision_json": "dist/app.js"
   },
   "repository": {
     "type": "git",
