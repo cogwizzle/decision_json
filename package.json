@@ -1,0 +1,29 @@
+{
+  "name": "decision_json",
+  "version": "1.0.0",
+  "description": "Create a decision tree from JSON.",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfehrman/decision_json.git"
+  },
+  "keywords": [
+    "decision",
+    "tree",
+    "command",
+    "line"
+  ],
+  "author": "Josepn Fehrman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jfehrman/decision_json/issues"
+  },
+  "homepage": "https://github.com/jfehrman/decision_json#readme",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "file-system": "^2.2.2"
+  }
+}
