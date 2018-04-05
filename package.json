@@ -29,7 +29,8 @@
   "homepage": "https://github.com/jfehrman/decision_json#readme",
   "dependencies": {
     "commander": "^2.15.1",
-    "file-system": "^2.2.2"
+    "file-system": "^2.2.2",
+    "prompt": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
