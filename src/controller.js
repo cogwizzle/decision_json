@@ -10,7 +10,7 @@ const controller = ({ file, init, add, list }) => {
   if (file) {
     if (init) {
 
-      const decision = promptInit(file);
+      const decision = promptInit();
       //writeDecisionTree(decision);
     } else if (add) {
 
@@ -28,10 +28,9 @@ const controller = ({ file, init, add, list }) => {
 /**
  * Prompt a user for information about the decision tree.
  * 
- * @param {string} file Filename required to generate a file.
  * @returns {object} JSON representation of the decision tree.
  */
-const promptInit = (file) => {
+const promptInit = () => {
   
   const schema = {
     properties: {
