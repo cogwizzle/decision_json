@@ -4,7 +4,7 @@
   "description": "Create a decision tree from JSON.",
   "main": "dist/app.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist && npm i -g",
+    "build": "rm -f ./dist/**.* && babel ./src --out-dir ./dist --ignore __test__ && sudo npm i -g",
     "start": "npm run build && decision_json",
     "test": "jest"
   },
@@ -30,11 +30,13 @@
   "dependencies": {
     "commander": "^2.15.1",
     "file-system": "^2.2.2",
-    "prompt": "^1.0.0"
+    "prompt": "^1.0.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
     "jest": "^22.4.3"
   }
 }

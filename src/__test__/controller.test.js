@@ -1,9 +1,6 @@
-import { promptInit } from '../controller';
-import prompt from 'prompt';
+import { promptInit, writeDecisionTree } from '../controller';
 
 describe('PromptInit.', () => {
-
-  jest.genMockFromModule('prompt');
 
   it('PromptInit shall prompt the user for initial information about the decision tree.', () => {
     
@@ -13,6 +10,19 @@ describe('PromptInit.', () => {
 
     expect(startTriggered).toHaveBeenCalled();
     expect(informationTrigger).toHaveBeenCalled();
+    expect(results).toBe(undefined);
+  });
+});
+
+describe('WriteFile.', () => {
+ 
+  it('Writefile shall call the functions to write a file to the system.', () => {
+    const writeTrigger = jest.spyOn(fs, 'writeFile');
+    const stringifyTrigger = jest.spyOn(JSON, 'stringify');
+    const results = writeDecisionTree('test.json', {});
+
+    expect(writeTrigger).toHaveBeenCalled();
+    expect(stringifyTrigger).toHaveBeenCalled();
     expect(results).toBe(undefined);
   });
 });

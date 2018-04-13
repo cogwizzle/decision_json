@@ -1,17 +1,18 @@
 import prompt from 'prompt';
+import fs from 'fs';
 
 /**
  * Accepts a CLI object and writes information to a decision tree.
  * 
  * @param {object} param0 The cli object.
  */
-const controller = ({ file, init, add, list }) => {
+const controller = ({ file, init, add, list, help }) => {
 
   if (file) {
     if (init) {
 
       const decision = promptInit();
-      //writeDecisionTree(decision);
+      writeDecisionTree(decision);
     } else if (add) {
 
 
@@ -21,7 +22,8 @@ const controller = ({ file, init, add, list }) => {
     }
   } else {
 
-    throw Error('File needs to be specified by using the -f flag.');
+    console.log('File needs to be specified.');
+    help();
   }
 }
 
@@ -54,8 +56,14 @@ const promptInit = () => {
   return promptResults;
 };
 
-module.exports = {
-  promptInit
-};
+const writeDecisionTree = (file, decision) => {
+
+  fs.writeFile(file, JSON.stringify(decision, undefined, 2), (error) => {if (error) console.log(error)});
+}
 
 export default controller;
+module.exports = {
+  controller,
+  promptInit,
+  writeDecisionTree
+};
