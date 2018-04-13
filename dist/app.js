@@ -13,4 +13,4 @@ var _controller = require('./controller');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_commander2.default.version(_package2.default.version).description('Create a JSON decision tree representation.').command('init', 'Initialize a file.').command('add', 'Add a state to the file.').command('list', 'List all of the states in the file.').parse(process.argv);
+_commander2.default.version(_package2.default.version).description('Create a JSON decision tree representation.').command('init', 'Initialize a file.').command('add', 'Add a state to the file.').command('list', 'List all of the states in the file.').command('rm', 'Remove a single state from the file.').parse(process.argv);

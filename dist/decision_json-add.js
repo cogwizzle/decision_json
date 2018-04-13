@@ -50,7 +50,7 @@ if (_commander2.default.file) {
         var schema = {
           properties: _extends({}, protoProperties, {
             slide: {
-              message: 'Enter the markdown for the slide:',
+              message: 'Enter the markdown for the slide',
               required: true
             }
           })

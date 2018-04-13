@@ -9,4 +9,5 @@ cli
   .command('init', 'Initialize a file.')
   .command('add', 'Add a state to the file.')
   .command('list', 'List all of the states in the file.')
+  .command('rm', 'Remove a single state from the file.')
   .parse(process.argv);

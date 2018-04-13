@@ -33,7 +33,7 @@ if (cli.file) {
           properties: {
             ...protoProperties,
             slide: {
-              message: 'Enter the markdown for the slide:',
+              message: 'Enter the markdown for the slide',
               required: true
             }
           }
