@@ -33,7 +33,6 @@ if (_commander2.default.file) {
 
     if (exists) {
 
-      console.log('file: ', _commander2.default.file);
       _fs2.default.readFile(_commander2.default.file, 'utf-8', function (err, data) {
 
         var decision = JSON.parse(data);

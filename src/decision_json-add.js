@@ -15,7 +15,6 @@ if (cli.file) {
 
     if (exists) {
 
-      console.log('file: ', cli.file);
       fs.readFile(cli.file, 'utf-8', (err, data) => {
 
         const decision = JSON.parse(data);
