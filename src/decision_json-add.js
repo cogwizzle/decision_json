@@ -4,6 +4,7 @@ import { promptInit, writeDecisionTree } from './controller';
 import prompt from 'prompt';
 import fs from 'fs';
 import v4 from 'uuid/v4';
+import PromptMulti from 'cli-input';
 
 cli
   .option('-f --file <file>', 'File name.')
@@ -31,29 +32,35 @@ if (cli.file) {
         } : {};
         const schema = {
           properties: {
-            ...protoProperties,
-            slide: {
-              message: 'Enter the markdown for the slide',
-              required: true
-            }
+            ...protoProperties
           }
         };
 
         prompt.start();
-        prompt.get(schema, (err, { parent, link, slide }) => {
+        prompt.get(schema, (err, { parent, link }) => {
 
-          parent = parent || null;
-          link = link || null;
-          const id = v4();
-          const state = {
-            id,
-            parent,
-            slide,
-            link
-          };
-          const nextDecision = {...decision};
-          nextDecision.state = [...nextDecision.state, state];
-          fs.writeFile(cli.file, JSON.stringify(nextDecision, undefined, 2), (error) => { if (error) console.log(error) });
+          console.log('Enter your markdown and press (Ctrl+D) to end finish.');
+          PromptMulti().multiline((err, lines, raw) => {
+
+            const slide = lines.join('\n');
+            parent = parent || null;
+            link = link || null;
+            const id = v4();
+            const state = {
+              id,
+              parent,
+              slide,
+              link
+            };
+            const nextDecision = { ...decision };
+            nextDecision.state = [...nextDecision.state, state];
+            fs.writeFile(cli.file, JSON.stringify(nextDecision, undefined, 2), (error) => {
+              if (error)
+                console.log(error) 
+              
+              process.exit();
+            });
+          });
         });
       });
     } else {

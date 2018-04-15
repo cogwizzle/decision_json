@@ -21,6 +21,10 @@ var _v = require('uuid/v4');
 
 var _v2 = _interopRequireDefault(_v);
 
+var _cliInput = require('cli-input');
+
+var _cliInput2 = _interopRequireDefault(_cliInput);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -48,34 +52,35 @@ if (_commander2.default.file) {
           }
         } : {};
         var schema = {
-          properties: _extends({}, protoProperties, {
-            slide: {
-              message: 'Enter the markdown for the slide',
-              required: true
-            }
-          })
+          properties: _extends({}, protoProperties)
         };
 
         _prompt2.default.start();
         _prompt2.default.get(schema, function (err, _ref) {
           var parent = _ref.parent,
-              link = _ref.link,
-              slide = _ref.slide;
+              link = _ref.link;
 
 
-          parent = parent || null;
-          link = link || null;
-          var id = (0, _v2.default)();
-          var state = {
-            id: id,
-            parent: parent,
-            slide: slide,
-            link: link
-          };
-          var nextDecision = _extends({}, decision);
-          nextDecision.state = [].concat(_toConsumableArray(nextDecision.state), [state]);
-          _fs2.default.writeFile(_commander2.default.file, JSON.stringify(nextDecision, undefined, 2), function (error) {
-            if (error) console.log(error);
+          console.log('Enter your markdown and press (Ctrl+D) to end finish.');
+          (0, _cliInput2.default)().multiline(function (err, lines, raw) {
+
+            var slide = lines.join('\n');
+            parent = parent || null;
+            link = link || null;
+            var id = (0, _v2.default)();
+            var state = {
+              id: id,
+              parent: parent,
+              slide: slide,
+              link: link
+            };
+            var nextDecision = _extends({}, decision);
+            nextDecision.state = [].concat(_toConsumableArray(nextDecision.state), [state]);
+            _fs2.default.writeFile(_commander2.default.file, JSON.stringify(nextDecision, undefined, 2), function (error) {
+              if (error) console.log(error);
+
+              process.exit();
+            });
           });
         });
       });
