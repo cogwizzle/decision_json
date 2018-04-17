@@ -55,6 +55,9 @@ decision_json list -f test.json
 
 `TODO add picture of output`
 
+## Known bugs
+The multi-line prompt for a slide's markdown currently has problems with backspacing to a previous line.  Because of this we recomend editing your Markdown in another editor and pasting it into the CLI input ocne completed.
+
 ## Support
 
 Please [open an issue](https://github.com/jfehrman/decision_json/issues/new) for support.
